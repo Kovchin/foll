@@ -1,5 +1,5 @@
 * {
-    font-family: sans-serif;
+	font-family: sans-serif;
     color: #2A75B3;
     box-sizing: border-box;
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 table {
-    width: 80%;
+	width: 80%;
     margin: 20px;
     border: 1px solid black;
     border-radius: 5px;
@@ -16,17 +16,18 @@ table {
 
 table td,
 table th {
-    padding: 5px;
+	padding: 5px;
     border: 1px solid black;
 }
 
 table th {
-    color: white;
+	color: white;
     background-color: #B3915D;
 }
 
+
 table tr:nth-child(2n) {
-    background-color: #FAF0E1;
+	background-color: #FAF0E1;
 }
 
 button {

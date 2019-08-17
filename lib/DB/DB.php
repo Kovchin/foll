@@ -9,7 +9,7 @@ class MyDBClass
 	//Строка запроса
 	private $query;
 	//Массив результат запроса к БД
-	private $table;
+	public $table;
 
 	//Конструктор класса при вызове формирует ссылку на базу данных $this->connect
 	public function __construct()
