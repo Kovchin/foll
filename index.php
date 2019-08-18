@@ -29,6 +29,9 @@
 			include_once('pages/table_for_index.php')
 			?>
 		</table>
+		<div class="ajax">
+
+		</div>
 	</main>
 	<footer>Все права защищены &copy; Ковчин П.В.</footer>
 </body>
