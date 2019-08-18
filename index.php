@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="./css/main.css">
 	<script src="js/ajax.js" defer></script>
+	<script src="js/index.js" defer></script>
 	<title>ВОЛС</title>
 </head>
 
