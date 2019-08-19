@@ -30,10 +30,10 @@ function write_table($crq)
 		echo
 			'<tr>
 		<td>' . $CRQ . '</td>
-		<td><a href="detail.php?crq=' . $CRQ . '">' . $name . '</a></td>
-		<td><input type="checkbox" name="'.$CRQ.'" ' . $compleate . '></td>
+		<td><a href="pages/detail.php?crq=' . $CRQ . '">' . $name . '</a></td>
+		<td><input type="checkbox" name="' . $CRQ . '" ' . $compleate . '></td>
 		<td><input type="checkbox" name="" ' . $agreed . ' disabled></td>
-		<td><input type="date" name="'.$CRQ.'" value = "' . $date_of_work . '"></td>
+		<td><input type="date" name="' . $CRQ . '" value = "' . $date_of_work . '"></td>
 	</tr>';
 	};
 };

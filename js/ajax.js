@@ -8,18 +8,16 @@
 //aj.innerHTML = ajax(url, method, isAsync);
 
 //Стандартный ajax запрос
-function ajax(url, method, isAsync) {
+function ajax(url, method) {
 	let xhttp = new XMLHttpRequest();
-	xhttp.open(method, url, isAsync);
+	xhttp.open(method, url);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	xhttp.addEventListener('readystatechange', () => {
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			console.log(xhttp.responseText);
+		}
+	});
 	xhttp.send();
 
-	/*Не работает разобраться!
-		xhttp.onreadystatechange = function () {
-			if (this.readyState == 4 && this.status == 200) {
-				console.log(this);
-			}
-		}*/
-
-	return xhttp.response;
 }

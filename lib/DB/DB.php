@@ -25,19 +25,25 @@ class MyDBClass
 		return $this->connect;
 		exit;
 	}
-	
+
+	//Просто отдать запрос к базе данных
+	public function query($mystring)
+	{
+		$this->connect->query($mystring);
+	}
+
 	//Заменить/инициализировать строку запроса
 	public function set_query($mystring)
 	{
 		$this->query = $mystring;
 		$this->init_table();
 	}
-	
+
 	//Формирование свойства table (результат запроса query) 
 	private function init_table()
 	{
 		$res_query = $this->connect->query($this->query);
-		$this->table = [];
+		$this->table = array();
 		while (($row = $res_query->fetch_assoc()) != false) {
 			$this->table[] = $row;
 		}
@@ -51,4 +57,11 @@ class MyDBClass
 		echo '</pre>';
 	}
 
+	public function get_table_as_array($pole)
+	{
+		$arr = array();
+		for ($i = 0; $i < count($this->table); $i++)
+			$arr[] = $this->table[$i][$pole];
+		return $arr;
+	}
 }

@@ -15,21 +15,21 @@ function show() {
 	let crq = event.target.name;
 
 	//выбор имени поля БД в зависимости от типа измененного поля
-	if (event.target.type == 'checkbox'){
+	if (event.target.type == 'checkbox') {
 		pole = 'compleate';
 		value = event.target.checked;
 	}
-	else if (event.target.type == 'date'){
+	else if (event.target.type == 'date') {
 		pole = 'date_of_work';
-		value = event.target.value;
+		value = '"' + event.target.value + ' 00:00:00"';
 	}
 	else {
 		value = '';
 		pole = '';
-}
+	}
 
-	let newurl = url +'?crq='+crq+'&pole='+pole+'&value='+value;
+	let newurl = url + '?crq=' + crq + '&pole=' + pole + '&value=' + value;
 
-	ajax(newurl, method, isAsync)
+	ajax(newurl, method)
 }
 
