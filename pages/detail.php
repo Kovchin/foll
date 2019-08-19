@@ -14,10 +14,19 @@
         <p class='logo'>ОТС Сибири Droid</p>
     </header>
     <main>
-        <a href="../index.php">К списку тех. карт</a></br>
-        <?php include_once 'crq_detail.php'; ?>
+        <a href="../index.php">К списку тех. карт</a>
+		<?php include_once 'detail_crq.php'; ?>
+		<hr>
+		<?php include_once 'detail_counterparty.php'; ?>
+		<hr>
+		<?php include_once 'detail_tc.php'; ?>
+		<hr>
+		<?php include_once 'detail_request.php'; ?>
+		<hr>
+		<?php include_once 'detail_ps.php'; ?>
     </main>
-    <footer>Все права защищены &copy; Ковчин П.В.</footer>
+	<footer>Все права защищены &copy; Ковчин П.В.</footer>
+	<script src="../js/detail.js"></script>
 </body>
 
 </html>

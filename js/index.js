@@ -1,11 +1,10 @@
 url = '../lib/ajax_index.php';
 method = 'GET';
-isAsync = false;
 
+//Навешиваем обработчик на изменение даты и выполнения работ
 document.body.addEventListener('change', show);
 
 //функция формирует ajax запрос исходя из данных которые были изменены
-
 function show() {
 	//Значение что нужно вставить в БД
 	let value;

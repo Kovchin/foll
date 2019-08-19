@@ -64,4 +64,16 @@ class MyDBClass
 			$arr[] = $this->table[$i][$pole];
 		return $arr;
 	}
+
+	public function create_select_option($pole, $defaultValue)
+	{
+		echo '<select>';
+		foreach ($this->table as $key) {
+			if ($key[$pole] == $defaultValue)
+			echo '<option selected = true>' . $key[$pole] . '</option>';
+			else
+				echo '<option>' . $key[$pole] . '</option>';
+		}
+		echo '</select>';
+	}
 }
