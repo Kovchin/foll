@@ -57,6 +57,7 @@ class MyDBClass
 		echo '</pre>';
 	}
 
+	//Возвращает результат запроса в виде массива
 	public function get_table_as_array($pole)
 	{
 		$arr = array();
@@ -65,12 +66,13 @@ class MyDBClass
 		return $arr;
 	}
 
+	//Создать список и установить курсор на дефольное значение
 	public function create_select_option($pole, $defaultValue)
 	{
 		echo '<select>';
 		foreach ($this->table as $key) {
 			if ($key[$pole] == $defaultValue)
-			echo '<option selected = true>' . $key[$pole] . '</option>';
+				echo '<option selected = true>' . $key[$pole] . '</option>';
 			else
 				echo '<option>' . $key[$pole] . '</option>';
 		}

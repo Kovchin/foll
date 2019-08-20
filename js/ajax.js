@@ -1,13 +1,3 @@
-//let url = 'http://foll/lib/test.php';
-//let method = 'GET';
-//let isAsync = false;
-
-//Ловим блок с классом ajax
-//let aj = document.querySelector('.ajax');
-//Вызов AJAX запроса к файлу url и вывод результата в блок что поймали выше
-//aj.innerHTML = ajax(url, method, isAsync);
-
-//Стандартный ajax запрос
 function ajax(url, method) {
 	let xhttp = new XMLHttpRequest();
 	xhttp.open(method, url);
@@ -19,5 +9,4 @@ function ajax(url, method) {
 		}
 	});
 	xhttp.send();
-
 }

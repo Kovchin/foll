@@ -1,3 +1,4 @@
+//данные куда отправлять запрос
 url = '../lib/ajax_index.php';
 method = 'GET';
 
@@ -31,4 +32,3 @@ function show() {
 
 	ajax(newurl, method)
 }
-
