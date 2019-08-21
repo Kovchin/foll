@@ -1,6 +1,6 @@
 <?php
 
-include_once('DB/DB.php');
+include_once('./DB/DB.php');
 
 $crq = $_GET['crq'];
 $name = $_GET['name'];

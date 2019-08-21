@@ -28,7 +28,7 @@ if (isset($_GET['crq'])) { ?>
 </table>
 <?php } else { ?>
 
-<form action="../lib/ajax_detail_addcrq.php" method="get">
+<form action="..\lib\ajax_detail_addcrq.php" method="get">
 	<table>
 		<tr>
 			<td><label for="crq">CRQ</label></td>
