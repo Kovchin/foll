@@ -4,12 +4,14 @@ include_once 'DB/DBRegistrationData.php';
 
 class Detail_data
 {
-
+    //Ссылка на БД
     private $connect;
-
+    //Строка запроса
     private $query;
-
+    //Результат выполнения запроса
     private $result_query;
+    //Массив с результатами запроса
+    private $table;
     //Конструктор класса 
     //Пока что в нем создается ссылка на объект БД
     public function __construct()
@@ -32,10 +34,19 @@ class Detail_data
             echo '<br /> <p class="error">Проверьте запрос: данных нет.</p>';
     }
     //Выводит результат запроса
-    public function get_result_query_as_string()
+    public function show_result_query_as_string()
     {
-        echo '<br />Результат запроса = ' . $this->result_query->num_rows . ' записей <br />';
-        print_r($this->result_query);
+
+        echo '<hr>Результат запроса = ' . $this->result_query->num_rows . ' записей.';
+        echo '<br />Количество полей в записях = ' . $this->result_query->field_count . '<br />';
+
+        $this->table = array();
+        while (($row = $this->result_query->fetch_assoc()) != false) {
+            $this->table[] = $row;
+        }
+        echo '<pre>';
+        print_r($this->table);
+        echo '</pre><hr>';
     }
 
     //выводит на экран текущую строку запроса

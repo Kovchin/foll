@@ -47,7 +47,7 @@ $curent_email_counterparty = $mydb->table[0]['email'];
 	$db = new Detail_data();
 	$db->set_query('SELECT `CRQ` FROM `fol_list`');
 	$db->query();
-	$db->get_result_query_as_string();
+	$db->show_result_query_as_string();
 
 	?>
 </table>
