@@ -27,7 +27,7 @@ $curent_email_counterparty = $mydb->table[0]['email'];
 <table>
 	<tr>
 		<td>Инициатор работ</td>
-		<td><?
+		<td class="fol_counterparty"><?
 			//Созадть список контрагентов и сделать активным текщего в данной ТК
 			$mydb->set_query("SELECT * FROM `fol_counterparty` ORDER BY `name`");
 			$test = $mydb->create_select_option('name', $curent_name_counterparty);

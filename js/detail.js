@@ -10,6 +10,8 @@ let fol_list_crq = document.querySelector('.fol_list_crq select');
 let fol_list_name = document.querySelector('.fol_list_name');
 //Дата производства работ
 let fol_list_data = document.querySelector('.fol_list_data');
+//Инициатор работ
+let fol_counetrparty_initiator = document.querySelector('.fol_counterparty');
 
 /*==============================
 Навешиваем обработчики событий
@@ -21,6 +23,9 @@ fol_list_crq.addEventListener('change', changeCRQ);
 fol_list_name.addEventListener('change', change_FolList_DataName);
 //изменение даты производства работ
 fol_list_data.addEventListener('change', change_FolList_DataName);
+//Изменение инициатора работ
+fol_counetrparty_initiator.addEventListener('change', change_folcounterparty_initiatior);
+
 
 /*==============================
 Глобальные переменный/константы
@@ -67,4 +72,10 @@ function change_FolList_DataName() {
     let newurl = url + '?crq=' + crq + '&pole=' + pole + '&value=' + value;
     //Отправляем запрос
     ajax(newurl, method)
+}
+
+function change_folcounterparty_initiatior() {
+    console.log('Hi from JS');
+    let newurl = '../lib/ajax_detail.php' + '?crq = 767 &test = Hello world';
+    ajax(newurl, 'GET');
 }
