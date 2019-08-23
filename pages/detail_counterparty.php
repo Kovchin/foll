@@ -22,32 +22,23 @@ $curent_email_counterparty = $mydb->table[0]['email'];
 
 ?>
 
-<p><a href="#">Добавить контрагента</a></p>
+<p><a href="./counterparty.php">Добавить контрагента</a></p>
 
 <table>
 	<tr>
 		<td>Инициатор работ</td>
-		<td class="fol_counterparty"><?
-			//Созадть список контрагентов и сделать активным текщего в данной ТК
+		<td class="fol_working_process_initiator"><?
+			//Создать список контрагентов и сделать активным текщего в данной ТК
 			$mydb->set_query("SELECT * FROM `fol_counterparty` ORDER BY `name`");
 			$test = $mydb->create_select_option('name', $curent_name_counterparty);
 			?></td>
 	</tr>
 	<tr>
 		<td>email</td>
-		<td><?= $curent_email_counterparty ?></td>
+		<td id="email"><?= $curent_email_counterparty ?></td>
 	</tr>
 	<tr>
 		<td>Телефон</td>
-		<td><?= $curent_phone_counterparty ?></td>
+		<td id="phone"><?= $curent_phone_counterparty ?></td>
 	</tr>
-	<?php
-
-	include_once '../lib/data_for_detail.php';
-	$db = new Detail_data();
-	$db->set_query('SELECT `CRQ` FROM `fol_list`');
-	$db->query();
-	$db->show_result_query_as_string();
-
-	?>
 </table>
