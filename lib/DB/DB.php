@@ -66,6 +66,15 @@ class MyDBClass
 		return $arr;
 	}
 
+	//Возвращает двухмерный массив с индексами равными id таблицы
+	public function get_true_table_as_array($id)
+	{
+		$arr = array();
+		foreach ($this->table as $value)
+			$arr[$value[$id]] = $value;
+		return $arr;
+	}
+
 	//Создать список и установить курсор на дефольное значение
 	public function create_select_option($pole, $defaultValue)
 	{

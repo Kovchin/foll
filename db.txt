@@ -1,0 +1,53 @@
+fol_counterparty 
+
+	1 	id  Первичный 	int(11) 			Нет 	Нет 		AUTO_INCREMENT 	
+
+	2 	nameИндекс 	char(20) 	utf8_general_ci 		Да 	NULL 	
+
+	3 	email 	char(50) 	utf8_general_ci 		Да 	NULL 	
+
+	4 	phone 	char(12) 	utf8_general_ci 		Да 	NULL 	
+
+fol_list 
+
+	1 	id  Первичный 	int(11) 			Нет 	Нет 		AUTO_INCREMENT 	
+
+	2 	CRQИндекс 	int(11) 			Нет 	Нет 	
+
+	3 	ASU 	int(11) 			Да 	NULL 	
+
+	4 	name 	text 	utf8_general_ci 	
+
+	5 	compleate 	tinyint(1) 			Да 	0 	
+
+	6 	agreed 	tinyint(1) 			Да 	NULL 	
+
+	7 	canceled 	tinyint(4) 			Да 	NULL 	
+
+	8 	date_of_work 	date 			Да 	NULL 	
+
+fol_system_flag 
+
+	1 	id  Первичный 	int(11) 			Нет 	Нет 		AUTO_INCREMENT 
+
+	2 	name 	text 	utf8_general_ci 		Нет 	Нет 	
+
+        1 	Инициатор
+        2 	Согласование ТК
+        3 	Согласование заявки на ВОЛС
+        4 	Рассылка на всех
+        5 	Отправлена на доработку
+        6 	Вариант согласован
+        7 	Информирование об отмене
+
+fol_working_process
+
+	1 	id  Первичный 	int(11) 			Нет 	Нет 		AUTO_INCREMENT
+
+	2 	id_crq 	int(11) 			Нет 	Нет
+
+	3 	id_counterparty 	int(11) 			Нет 	Нет
+
+	4 	flag 	smallint(2) 			Нет 	Нет
+
+	5 	data 	date 			Да 	NULL

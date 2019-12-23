@@ -1,5 +1,6 @@
 <?
 include_once '.\lib\DB\DB.php';
+
 $crq = new MyDBClass;
 
 //В зависимости от _GET['sort'] выбирает фильтр в запросе к БД

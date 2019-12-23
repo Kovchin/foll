@@ -15,16 +15,19 @@
     </header>
     <main>
         <a href="../index.php">К списку тех. карт</a>
+        <!-- CRQ -->
         <?php include_once 'detail_crq.php'; ?>
         <hr>
         <?php if (isset($_GET['crq'])) { ?>
-        <?php include_once 'detail_counterparty.php'; ?>
-        <hr>
-        <?php include_once 'detail_tc.php'; ?>
-        <hr>
-        <?php include_once 'detail_request.php'; ?>
-        <hr>
-        <?php include_once 'detail_ps.php'; ?>
+            <!-- Контрагенты -->
+            <?php include_once 'detail_counterparty.php';
+            ?>
+            <hr>
+            <!-- Ход согласования работ -->
+            <?php include_once 'detail_tc.php'; ?>
+            <hr>
+            <!-- Отмена работ -->
+            <?php include_once 'detail_ps.php'; ?>
         <?php } ?>
     </main>
     <footer>Все права защищены &copy; Ковчин П.В.</footer>
