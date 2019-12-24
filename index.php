@@ -22,8 +22,8 @@
 			<tr>
 				<th><a href="?sort=CRQ">№ CRQ</a></th>
 				<th><a href="?sort=name">Наименование работы по ТК</a></th>
-				<th><a href="?sort=compleate">Работы выполнены</a></th>
 				<th><a href="?sort=agreed">Работы согласованы</a></th>
+				<th><a href="?sort=compleate">Работы выполнены</a></th>
 				<th><a href="?sort=date_of_work">Дата проведения работ</a></th>
 			</tr>
 			<?php

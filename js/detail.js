@@ -80,7 +80,7 @@ function change_fol_working_process_initiator() {
 	let method = 'POST';
 
 	let initiator = document.querySelector('.fol_working_process_initiator select').value;
-//Формирование данных запроса для PHP файла
+	//Формирование данных запроса для PHP файла
 	let testDataArr = {
 		"crq": crq,
 		"initiator": initiator
@@ -88,6 +88,7 @@ function change_fol_working_process_initiator() {
 
 	ajax1(url, method, showinitiator, testDataArr)
 }
+
 //Отображение данных текущего контрагента
 function showinitiator(data) {
 	data = JSON.parse(data);

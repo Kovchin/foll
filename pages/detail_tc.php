@@ -28,6 +28,7 @@ $arr_working = $mydb->table;
 		<th>Этап согласования</th>
 		<th>Дата согласования</th>
 		<th>Отправлена на доработку</th>
+		<th>Причина отправки на доработку</th>
 	</tr>
 
 	<!--Формирование таблицы согласования работ на основе $arr_detail_tc-->
@@ -39,11 +40,12 @@ $arr_working = $mydb->table;
 		echo '<td> <input type="date" name="" id="" value = "' . ($arr_detail_tc[$key]['data']) . '"</td>';
 		//Флаг "Отправлена на доработку"
 		echo '<td><input type="checkbox" name="" id=""></td>';
+		echo '<td><input type="text"></td>';
 		echo '</tr>';
 	} ?>
 
 	<!--Добавление нового контрагента-->
-	<td>
+	<td colspan="4">
 		<?
 		echo '<select>';
 		foreach ($arr_counterparty as $value) {
@@ -71,7 +73,7 @@ $arr_working = $mydb->table;
 
 
 	<!--Добавление нового контрагента-->
-	<td>
+	<td colspan="2">
 		<?
 		echo '<select>';
 		foreach ($arr_counterparty as $value) {
