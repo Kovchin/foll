@@ -97,3 +97,32 @@ function showinitiator(data) {
 	email.innerHTML = data.email;
 	phone.innerHTML = data.phone;
 }
+
+/*======================
+Условия отвечающее за отображение и скрытия блоков отвечающих за отмену работ
+======================*/
+
+let cancelled = document.querySelector('.no_cancelled input'), 	//флаг
+	cancelledBlock = document.querySelector('.cancelled'),		//скрываемый блок
+	cancelledValue = cancelled.checked; 						//значение флага
+
+//отображаем текущее состояние блока отменены ли работы
+showcanselled(cancelledValue, cancelledBlock);
+
+//триггер на изменение состояния
+cancelled.onchange = () => {
+	cancelledValue = cancelled.checked;
+	showcanselled(cancelledValue, cancelledBlock);
+}
+
+//функция отображающая блок при отмене работ
+//"flag" отвечает за checkbox
+// если он выбран то поле "div" появляется, а блок содержащий flag исчезает
+function showcanselled(flag, div) {
+	if (flag) {
+		cancelled.parentNode.classList.add('removed');
+		div.classList.remove('removed');
+	}
+	else
+		div.classList.add('removed');
+}
