@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 27 2019 г., 15:54
+-- Время создания: Дек 30 2019 г., 16:36
 -- Версия сервера: 8.0.12
 -- Версия PHP: 7.2.10
 
@@ -1400,6 +1400,50 @@ INSERT INTO `objects` (`id`, `name`, `erg_id`, `address`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `personel`
+--
+
+CREATE TABLE `personel` (
+  `id` int(11) NOT NULL,
+  `name` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `patronimicname` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `surname` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `personnel_number` tinyint(4) DEFAULT NULL,
+  `position_id` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `subdivision_id` int(11) NOT NULL,
+  `passport` tinyint(4) DEFAULT NULL,
+  `date_passport` date DEFAULT NULL,
+  `registration` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `inn` tinyint(4) DEFAULT NULL,
+  `birth` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `position`
+--
+
+CREATE TABLE `position` (
+  `id` int(11) NOT NULL,
+  `position` char(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `position`
+--
+
+INSERT INTO `position` (`id`, `position`) VALUES
+(1, 'Начальник службы'),
+(2, 'Начальник группы'),
+(3, 'Ведущий эксперт'),
+(4, 'Главный эксперт'),
+(5, 'Ведущий специалист'),
+(6, 'Главный специалист');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `schedule`
 --
 
@@ -2220,6 +2264,37 @@ INSERT INTO `signs` (`id`, `line1`, `line2`, `line3`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `subdivision`
+--
+
+CREATE TABLE `subdivision` (
+  `id` int(11) NOT NULL,
+  `subdivision` char(255) NOT NULL,
+  `short_subdivision` char(255) NOT NULL,
+  `city` char(255) NOT NULL,
+  `address` char(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `subdivision`
+--
+
+INSERT INTO `subdivision` (`id`, `subdivision`, `short_subdivision`, `city`, `address`) VALUES
+(1, 'Оперативно техническая служба Сибири', 'ОТС Сибири', 'Красноярск', 'г. Красноярск. ул. Ады Лебедевой, д. 117; комната 1-34'),
+(2, 'Группа управления и мониторинга систем связи Сибири', 'ГУиМС Сибири', 'Красноярск', 'г. Красноярск, ул. Ады Лебедевой, д. 117; комната 1-34'),
+(3, 'Группа администрирования информационно-коммуникационных систем Сибири', 'ГАИКС Сибири', 'Красноярск', 'г. Красноярск, ул. Ады Лебедевой, д. 117; комната 1-35'),
+(4, 'Красноярская эксплуатационно-ремонтная группа', 'Красноярская ЭРГ', 'Красноярск', 'г. Красноярск, ул. Пограничников, д. 105, стр. 5, офис 603'),
+(5, 'Хакасская эксплуатационно-ремонтная группа', 'Хакасская ЭРГ', 'Саяногорск', 'г. Саяногорск, ул. Индустриальная, д. 39а ; комната 025'),
+(6, 'Новосибирская эксплуатационно-ремонтная группа', 'Новосибирская ЭРГ', 'Новосибирск', 'г. Новосибирск, ул. Никитина, д. 20; комната фоис 317'),
+(7, 'Омская эксплуатационно-ремонтная группа', 'Омская ЭРГ', 'Омск', 'г. Омск, ул. Губкина, д. 4; комната 28'),
+(8, 'Томская эксплуатационно-ремонтная группа', 'Томская ЭРГ', 'Томск', 'г. Томск, ул. Энергетическая, д. 1'),
+(9, 'Красноярская эксплуатационно-ремонтная группа', 'Красноярская ЭРГ', 'Мотыгино', 'ПС 220 кВ Раздолинская, п.Раздолинск'),
+(10, 'Красноярская эксплуатационно-ремонтная группа', 'Красноярская ЭРГ', 'Пеледуй', 'п. Пеледуй, ул. Советская, д. 84, кв. 5'),
+(11, 'Новосибирская эксплуатационно-ремонтная группа', 'Новосибирская ЭРГ', 'Кемерово', 'г. Кемерово, ул. Терешковой, д. 23');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `year_close`
 --
 
@@ -2292,6 +2367,18 @@ ALTER TABLE `objects`
   ADD UNIQUE KEY `name` (`name`);
 
 --
+-- Индексы таблицы `personel`
+--
+ALTER TABLE `personel`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `position`
+--
+ALTER TABLE `position`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `schedule`
 --
 ALTER TABLE `schedule`
@@ -2301,6 +2388,12 @@ ALTER TABLE `schedule`
 -- Индексы таблицы `signs`
 --
 ALTER TABLE `signs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `subdivision`
+--
+ALTER TABLE `subdivision`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2356,6 +2449,18 @@ ALTER TABLE `objects`
   MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
+-- AUTO_INCREMENT для таблицы `personel`
+--
+ALTER TABLE `personel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `position`
+--
+ALTER TABLE `position`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT для таблицы `schedule`
 --
 ALTER TABLE `schedule`
@@ -2366,6 +2471,12 @@ ALTER TABLE `schedule`
 --
 ALTER TABLE `signs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `subdivision`
+--
+ALTER TABLE `subdivision`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
