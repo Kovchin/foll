@@ -22,7 +22,7 @@ $arr_working = $mydb->table;
 
 ?>
 <h2>Согласование</h2>
-<table>
+<table class="matching">
 
 	<tr>
 		<th>Этап согласования</th>

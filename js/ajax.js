@@ -24,11 +24,39 @@ function ajax1(url, method, functionName, dataArray) {
 	}
 };
 
-function requestData(dataArr){
+function requestData(dataArr) {
 	let out = '';
-	for (let key in dataArr){
-		out +=`${key}=${dataArr[key]}&`;
+	for (let key in dataArr) {
+		out += `${key}=${dataArr[key]}&`;
 	}
 	//console.log(out);
 	return out;
 }
+//Попытка переделать программу на fetch запросы. Пока не успешная
+//https://www.youtube.com/watch?v=eKCD9djJQKc&t=1169s
+function sendRequest(method, url, body = null) {
+	const headers = {
+		'Content-Type': 'application/json'
+		//"Content-type": "application/x-www-form-urlencoded"
+	}
+
+	return fetch(url, {
+		method: method,
+		body: JSON.stringify(body),
+		//body: body,
+		headers: headers
+	}).then(response => {
+
+		if (response.ok) {
+			return response.json();
+			//return response.text();
+		}
+
+		return response.json().then(error => {
+			const e = new Error('Что то пошло не так')
+			e.data = error
+			throw e
+		})
+	})
+
+};

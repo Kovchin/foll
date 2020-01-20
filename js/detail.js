@@ -12,6 +12,22 @@ let fol_list_name = document.querySelector('.fol_list_name');
 let fol_list_data = document.querySelector('.fol_list_data');
 //Инициатор работ
 let fol_working_process_initiator = document.querySelector('.fol_working_process_initiator');
+//Ход согласования работ
+let fol_working_process = document.querySelectorAll('.matching input');
+//Ход согласования работ добавление согласованта
+let fol_working_process_add = document.querySelector('.matching select');
+/*=
+Запрос листинга из таблицы согласования
+=*/
+let arr_listing_working_process_Matching = [];//Целевой листинг
+
+let listing_working_process_Matching = document.querySelector('.matching');	//ловим таблицу
+let rec = listing_working_process_Matching.childNodes[1].children.length;	//количество записей для циклического перебора
+for (let i = 1; i < rec - 1; i++) {
+	arr_listing_working_process_Matching.push(listing_working_process_Matching.childNodes[1].children[i].cells[0].innerText);
+}
+//
+
 
 /*==============================
 Навешиваем обработчики событий
@@ -24,7 +40,13 @@ fol_list_name.addEventListener('change', change_FolList_DataName);
 //изменение даты производства работ
 fol_list_data.addEventListener('change', change_FolList_DataName);
 //Изменяем инициатора работ
-fol_working_process_initiator.addEventListener('change', change_fol_working_process_initiator)
+fol_working_process_initiator.addEventListener('change', change_fol_working_process_initiator);
+//Изменение данных в разделе Согласование работ
+for (let i = 0; i < fol_working_process.length; i++) {
+	fol_working_process[i].addEventListener('change', change_fol_working_process);
+}
+//Добавление нового согласованта в Согласование
+fol_working_process_add.addEventListener('change', fol_working_process_addMatching);
 
 /*==============================
 Глобальные переменный/константы
@@ -125,4 +147,46 @@ function showcanselled(flag, div) {
 	}
 	else
 		div.classList.add('removed');
+}
+
+//todo
+function change_fol_working_process() {
+	/*===
+	метод fetch более современный способ запросов к серверу
+	===*/
+	let url = '../lib/ajax_detail_change.php',
+		method = 'POST',
+		inputData = {
+			'data1': 'mydata',
+			'data2': 10,
+			'data3': true
+		};
+	//сам запрос
+	sendRequest(method, url, inputData)
+		.then(data => console.log(data))
+		.catch(err => console.log(err));
+
+	//================
+	console.clear();
+	console.log('Заглушка на изменение данных согласования работ');
+	console.log(`Номер инцидента: ${crq}`);
+	console.log(`Этап согласования: ${this.parentNode.parentNode.cells[0].innerText}`);
+	//для формирования запроса
+	console.log(this.type);
+	console.log(this.value);
+}
+
+function test() {
+	console.log(this);
+}
+
+//todo
+
+function fol_working_process_addMatching() {
+	console.clear();
+	console.log('Заглушка на добавление нового согласованта');
+	console.log(`Номер инцидента: ${crq}`);
+	console.log(`Новый согласовант: ${this.value}`);
+	//листинг для проверки на наличие выбираемого согласованта
+	console.log(arr_listing_working_process_Matching);
 }
