@@ -32,31 +32,23 @@ function requestData(dataArr) {
 	//console.log(out);
 	return out;
 }
+
 //Попытка переделать программу на fetch запросы. Пока не успешная
 //https://www.youtube.com/watch?v=eKCD9djJQKc&t=1169s
-function sendRequest(method, url, body = null) {
-	const headers = {
-		'Content-Type': 'application/json'
-		//"Content-type": "application/x-www-form-urlencoded"
-	}
 
+//Функция генерирующая fetch запрос
+function sendRequest(method, url, body = null) {
+	//Формируем заголовок запроса (можно и без него я в php просто парсю полезную нагрузку)
+	const headers = {
+		'Content-Type': 'application/json',
+	}
+	//В выводе функции вызываем fetch запрос с подготовленными данными
 	return fetch(url, {
 		method: method,
 		body: JSON.stringify(body),
-		//body: body,
 		headers: headers
+		//Так как результатом fetch возвращается promise, то стрелочной функцией разбираем ответ как json (можно получать объекты)
 	}).then(response => {
-
-		if (response.ok) {
-			return response.json();
-			//return response.text();
-		}
-
-		return response.json().then(error => {
-			const e = new Error('Что то пошло не так')
-			e.data = error
-			throw e
-		})
+		return response.json();
 	})
-
 };

@@ -39,10 +39,17 @@ $arr_working = $mydb->table;
 		//Дата согласования
 		echo '<td> <input type="date" name="" id="" value = "' . ($arr_detail_tc[$key]['data']) . '"</td>';
 		//Флаг "Отправлена на доработку"
-		echo '<td><input type="checkbox" name="" id=""></td>';
-		echo '<td><input type="text"></td>';
+		if ($arr_detail_tc[$key]['revision'] == 'true') {
+			echo '<td><input type="checkbox" checked></td>';
+		} else {
+			echo '<td><input type="checkbox"></td>';
+		}
+		//Причина отправки на доработку
+		echo '<td><input type="text" value = "' . ($arr_detail_tc[$key]['revisionComment']) . '"></td>';
 		echo '</tr>';
-	} ?>
+	}
+	?>
+
 
 	<!--Добавление нового контрагента-->
 	<td colspan="4">

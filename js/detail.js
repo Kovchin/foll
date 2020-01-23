@@ -155,31 +155,33 @@ function change_fol_working_process() {
 	метод fetch более современный способ запросов к серверу
 	===*/
 	let url = '../lib/ajax_detail_change.php',
-		method = 'POST',
-		inputData = {
-			'data1': 'mydata',
-			'data2': 10,
-			'data3': true
-		};
+		method = 'POST';
+
+	//Формирование json массива с данными для формирования запроса
+	let inputData = {
+		'crq': crq,
+		'dbFieldName': this.parentNode.parentNode.cells[0].innerText,
+		'type': this.type,
+	};
+
+	//Проверка и если мы ставим галочку то в поле value ставится true в противном случае значение value
+	if (this.type == 'checkbox') {
+		inputData.value = this.checked;
+	} else {
+		inputData.value = this.value;
+	};
+
 	//сам запрос
 	sendRequest(method, url, inputData)
 		.then(data => console.log(data))
 		.catch(err => console.log(err));
-
-	//================
-	console.clear();
-	console.log('Заглушка на изменение данных согласования работ');
-	console.log(`Номер инцидента: ${crq}`);
-	console.log(`Этап согласования: ${this.parentNode.parentNode.cells[0].innerText}`);
-	//для формирования запроса
-	console.log(this.type);
-	console.log(this.value);
-}
-
+	console.info('Смотри запрос во вкладке Сеть')
+};
+/*
 function test() {
 	console.log(this);
 }
-
+*/
 //todo
 
 function fol_working_process_addMatching() {

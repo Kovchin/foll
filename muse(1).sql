@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 30 2019 г., 17:08
+-- Время создания: Янв 23 2020 г., 16:35
 -- Версия сервера: 8.0.12
 -- Версия PHP: 7.2.10
 
@@ -985,7 +985,9 @@ INSERT INTO `fol_counterparty` (`id`, `name`, `email`, `phone`) VALUES
 (44, 'Новый', 'new@test.ru', '22232233232'),
 (45, 'Павел', 'kovchin@mail.ru', '+79607601503'),
 (46, 'Еще один контрагент', 'mail@mail.ru', '+79999999999'),
-(47, 'Алексей', 'agraffit@gmail.com', '+79029233190');
+(47, 'Алексей', 'agraffit@gmail.com', '+79029233190'),
+(48, 'Смуглов', 'smuglon@ya.ru', '+79039874477'),
+(49, 'Кэскил', 'nik96keskil@mail.ru', '+79832886166');
 
 -- --------------------------------------------------------
 
@@ -1011,13 +1013,15 @@ CREATE TABLE `fol_list` (
 INSERT INTO `fol_list` (`id`, `CRQ`, `ASU`, `name`, `compleate`, `agreed`, `canceled`, `date_of_work`) VALUES
 (1, 123321, 0, '123321 Что это за работы', 0, 1, 0, '2019-08-18'),
 (2, 767, 0, 'ВОЛС 767', 0, 0, 0, '2007-06-07'),
-(18, 1, NULL, 'test 1', 0, NULL, NULL, '2019-12-10'),
+(18, 1, NULL, 'ТК Имени Василия. Но мы внесли еще какие то данные', 0, NULL, NULL, '2019-12-10'),
 (20, 234234, NULL, 'test', 0, NULL, NULL, '2019-12-09'),
 (26, 7000, NULL, 'еуые', 0, NULL, NULL, NULL),
 (27, 7001, NULL, 'Тестовые работы', 0, NULL, NULL, NULL),
 (28, 7002, NULL, 'Замена поля название работ', 0, NULL, NULL, '2019-12-24'),
 (29, 7003, NULL, 'Новая ТК', 0, NULL, NULL, NULL),
-(30, 7005, NULL, 'Работы имени Юрчелло', 0, NULL, NULL, '2019-12-25');
+(30, 7005, NULL, 'Работы имени Юрчелло', 0, NULL, NULL, '2019-12-25'),
+(31, 7010, NULL, 'ТК Имени Василия. Но мы внесли еще какие то данные', 0, NULL, NULL, '2020-01-31'),
+(32, 707070, NULL, 'Работы по ТК на ВОЛС Пеледуй', 0, NULL, NULL, '2020-01-30');
 
 -- --------------------------------------------------------
 
@@ -1054,52 +1058,68 @@ CREATE TABLE `fol_working_process` (
   `id_crq` int(11) NOT NULL,
   `id_counterparty` int(11) NOT NULL,
   `flag` smallint(2) NOT NULL,
-  `data` date DEFAULT NULL
+  `data` date DEFAULT NULL,
+  `revision` char(10) DEFAULT NULL,
+  `revisionComment` text CHARACTER SET utf8 COLLATE utf8_general_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `fol_working_process`
 --
 
-INSERT INTO `fol_working_process` (`id`, `id_crq`, `id_counterparty`, `flag`, `data`) VALUES
-(1, 2, 41, 1, '2019-08-09'),
-(2, 2, 1, 2, '2019-08-01'),
-(3, 2, 2, 2, '2019-08-02'),
-(4, 2, 1, 3, '2019-07-23'),
-(5, 2, 2, 3, '2019-07-02'),
-(6, 2, 3, 3, '2019-07-17'),
-(7, 1, 12, 1, '2019-08-05'),
-(8, 18, 1, 1, NULL),
-(9, 20, 12, 1, NULL),
-(26, 26, 41, 1, NULL),
-(27, 26, 2, 2, NULL),
-(28, 26, 3, 2, NULL),
-(29, 26, 4, 2, NULL),
-(30, 27, 1, 1, NULL),
-(31, 27, 2, 2, NULL),
-(32, 27, 3, 2, NULL),
-(33, 27, 4, 2, NULL),
-(34, 28, 46, 1, NULL),
-(35, 28, 2, 2, NULL),
-(36, 28, 3, 2, NULL),
-(37, 28, 4, 2, NULL),
-(38, 28, 2, 3, NULL),
-(39, 28, 3, 3, NULL),
-(40, 28, 5, 3, NULL),
-(41, 29, 1, 1, NULL),
-(42, 29, 2, 2, NULL),
-(43, 29, 3, 2, NULL),
-(44, 29, 4, 2, NULL),
-(45, 29, 2, 3, NULL),
-(46, 29, 3, 3, NULL),
-(47, 29, 5, 3, NULL),
-(48, 30, 47, 1, NULL),
-(49, 30, 2, 2, '2019-12-27'),
-(50, 30, 3, 2, NULL),
-(51, 30, 4, 2, NULL),
-(52, 30, 2, 3, NULL),
-(53, 30, 3, 3, NULL),
-(54, 30, 5, 3, NULL);
+INSERT INTO `fol_working_process` (`id`, `id_crq`, `id_counterparty`, `flag`, `data`, `revision`, `revisionComment`) VALUES
+(1, 2, 41, 1, '2019-08-09', NULL, NULL),
+(2, 2, 1, 2, '2019-08-01', NULL, NULL),
+(3, 2, 2, 2, '2019-08-02', NULL, NULL),
+(4, 2, 1, 3, '2019-07-23', NULL, NULL),
+(5, 2, 2, 3, '2019-07-02', NULL, NULL),
+(6, 2, 3, 3, '2019-07-17', NULL, NULL),
+(7, 1, 12, 1, '2019-08-05', NULL, NULL),
+(8, 18, 44, 1, NULL, NULL, NULL),
+(9, 20, 12, 1, NULL, NULL, NULL),
+(26, 26, 41, 1, NULL, NULL, NULL),
+(27, 26, 2, 2, NULL, NULL, NULL),
+(28, 26, 3, 2, NULL, NULL, NULL),
+(29, 26, 4, 2, NULL, NULL, NULL),
+(30, 27, 1, 1, NULL, NULL, NULL),
+(31, 27, 2, 2, NULL, NULL, NULL),
+(32, 27, 3, 2, NULL, NULL, NULL),
+(33, 27, 4, 2, NULL, NULL, NULL),
+(34, 28, 46, 1, NULL, NULL, NULL),
+(35, 28, 2, 2, NULL, NULL, NULL),
+(36, 28, 3, 2, NULL, NULL, NULL),
+(37, 28, 4, 2, NULL, NULL, NULL),
+(38, 28, 2, 3, NULL, NULL, NULL),
+(39, 28, 3, 3, NULL, NULL, NULL),
+(40, 28, 5, 3, NULL, NULL, NULL),
+(41, 29, 1, 1, NULL, NULL, NULL),
+(42, 29, 2, 2, NULL, NULL, NULL),
+(43, 29, 3, 2, NULL, NULL, NULL),
+(44, 29, 4, 2, NULL, NULL, NULL),
+(45, 29, 2, 3, NULL, NULL, NULL),
+(46, 29, 3, 3, NULL, NULL, NULL),
+(47, 29, 5, 3, NULL, NULL, NULL),
+(48, 30, 3, 1, NULL, NULL, NULL),
+(49, 30, 2, 2, '2019-12-27', NULL, NULL),
+(50, 30, 3, 2, NULL, 'true', 'Запрошены сроки'),
+(51, 30, 4, 2, NULL, NULL, NULL),
+(52, 30, 2, 3, NULL, NULL, NULL),
+(53, 30, 3, 3, NULL, NULL, NULL),
+(54, 30, 5, 3, NULL, NULL, NULL),
+(55, 31, 49, 1, NULL, NULL, NULL),
+(56, 31, 2, 2, NULL, NULL, NULL),
+(57, 31, 3, 2, NULL, NULL, NULL),
+(58, 31, 4, 2, NULL, NULL, NULL),
+(59, 31, 2, 3, NULL, NULL, NULL),
+(60, 31, 3, 3, NULL, NULL, NULL),
+(61, 31, 5, 3, NULL, NULL, NULL),
+(62, 32, 49, 1, NULL, NULL, NULL),
+(63, 32, 2, 2, NULL, NULL, NULL),
+(64, 32, 3, 2, NULL, NULL, NULL),
+(65, 32, 4, 2, NULL, NULL, NULL),
+(66, 32, 2, 3, NULL, NULL, NULL),
+(67, 32, 3, 3, NULL, NULL, NULL),
+(68, 32, 5, 3, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2416,13 +2436,13 @@ ALTER TABLE `erg`
 -- AUTO_INCREMENT для таблицы `fol_counterparty`
 --
 ALTER TABLE `fol_counterparty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT для таблицы `fol_list`
 --
 ALTER TABLE `fol_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT для таблицы `fol_system_flag`
@@ -2434,7 +2454,7 @@ ALTER TABLE `fol_system_flag`
 -- AUTO_INCREMENT для таблицы `fol_working_process`
 --
 ALTER TABLE `fol_working_process`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT для таблицы `log`
