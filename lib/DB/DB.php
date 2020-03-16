@@ -5,11 +5,12 @@ require_once 'DBRegistrationData.php';
 class MyDBClass
 {
 	//Экземпляр класса базы данных
-	private $connect;
+	public $connect;
 	//Строка запроса
 	private $query;
 	//Массив результат запроса к БД
 	public $table;
+
 
 	//Конструктор класса при вызове формирует ссылку на базу данных $this->connect
 	public function __construct()
@@ -49,6 +50,7 @@ class MyDBClass
 		}
 	}
 
+	/*
 	//Вывести на экран свойство table
 	public function show_table_as_list()
 	{
@@ -56,6 +58,7 @@ class MyDBClass
 		print_r($this->table);
 		echo '</pre>';
 	}
+*/
 
 	//Возвращает результат запроса в виде массива
 	public function get_table_as_array($pole)

@@ -27,7 +27,7 @@
 				<th><a href="?sort=date_of_work">Дата проведения работ</a></th>
 			</tr>
 			<?php
-			include_once('pages/table_for_index.php')
+			include_once('pages/table_for_index.php');
 			?>
 		</table>
 		<div class="ajax">
